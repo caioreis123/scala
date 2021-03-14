@@ -1,7 +1,6 @@
 package udemy
 
 object Principal extends App {
-  println("olá, scala!")
   class Writer (firstName: String, surname: String, val birthYear: Int){
     val fullName: String = f"$firstName $surname"
   }
@@ -20,11 +19,19 @@ object Principal extends App {
     def decrement(amount: Int) = new Counter(count-amount)
 
   }
-  val caio = new Writer("caio", "reis", 1989)
-  println(caio.fullName)
-  val counter = new Counter(10)
-  println(counter.decrement.currentCount)
-  println(counter.currentCount)
-  println(counter.increment(10).currentCount)
+//  val caio = new Writer("caio", "reis", 1989)
+//  val counter = new Counter(10)
 
+  class Person(val name:String, favoriteMovie:String, val age: Int=0){
+    def +(nickname: String): Person = new Person(s"$name ($nickname)", favoriteMovie)
+    def unary_+(): Person = new Person(name, favoriteMovie, age+1)
+    def learns(subject: String): String = s"$name is learning $subject"
+    def learnsScala : String = learns("Scala")
+    def apply(watchTime: Int): String = s"$name whatced $favoriteMovie $watchTime times"
+  }
+  val caio = new Person("Caio", "O Auto da Compadecida", 31)
+  println(caio + "Caíto" name)
+  println(+caio age)
+  println(caio learnsScala)
+  println(caio(9))
 }
